@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class B_StringMethods {
     /**
      * <p>Makes the full name with specified the first and the last name. If a
@@ -9,7 +11,11 @@ public class B_StringMethods {
      * @return the full name
      */
     public static String fullName(String firstName, String lastName) {
-        return null;
+        if (Objects.equals(lastName, "")) {
+            return firstName + lastName;
+        } else {
+            return firstName + " " + lastName;
+        }
     }
 
     /**
@@ -23,7 +29,14 @@ public class B_StringMethods {
      * the given number
      */
     public static boolean certainNumberOfChar(String text, char ch, int cnt) {
-        return false;
+        int length = text.length();
+        int repeat = 0; 
+        for (int i = 0; i < length; i++ ) {
+            if ( text.charAt(i) == ch ) {
+                repeat++;
+            }
+        }
+        return repeat == cnt;
     }
 
     /**
@@ -35,6 +48,12 @@ public class B_StringMethods {
      * @return the smaller word
      */
     public static String firstWord(String wordA, String wordB) {
-        return null;
+        String answer = " ";
+        if ( wordA.compareTo(wordB) > 0 ) {
+            answer = wordB;
+        } else if ( wordA.compareTo(wordB) < 0) {
+            answer = wordA;
+          }
+         return answer;
     }
 }

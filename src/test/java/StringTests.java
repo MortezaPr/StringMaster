@@ -1,5 +1,6 @@
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class StringTests {
     @Test
@@ -108,4 +109,56 @@ public class StringTests {
     /*
     Additional method tests should be provided below.
      */
+    @Test
+    public void englishToMorse() {
+        String[] code
+                = { ".-", "-...", "-.-.", "-..", ".",
+                "..-.", "--.", "....", "..", ".---",
+                "-.-", ".-..", "--", "-.", "---",
+                ".--.", "--.-", ".-.", "...", "-",
+                "..-", "...-", ".--", "-..-", "-.--",
+                "--..", "|" };
+
+        char[] letter = { 'a', 'b', 'c', 'd', 'e', 'f',
+                'g', 'h', 'i', 'j', 'k', 'l',
+                'm', 'n', 'o', 'p', 'q', 'r',
+                's', 't', 'u', 'v', 'w', 'x',
+                'y', 'z', '1', '2', '3', '4',
+                '5', '6', '7', '8', '9', '0' };
+        assertEquals("-- --- .-. - . --.. .-", C_LoopAndString.englishToMorse(code,"morteza",letter));
+        assertEquals(".--. --- ..- .-. .-. .- -- --.. .- -.", C_LoopAndString.englishToMorse(code,"pourramzan",letter));
+    }
+
+    @Test
+    public void reverser() {
+        assertEquals("aliqua magna dolore et labore ut incididunt tempor eiusmod do sed elit, adipiscing consectetur amet, sit dolor ipsum Lorem",
+                C_LoopAndString.reverser("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"));
+        assertEquals("Morteza Is Name My Hello",C_LoopAndString.reverser("Hello My Name Is Morteza"));
+    }
+
+    @Test
+    public void equal() {
+        assertTrue(C_LoopAndString.equal("ABCDEFGHIJKLMNOP", "ABCDEFGHIJKLMNOP"));
+        assertFalse(C_LoopAndString.equal("ZYXwvuUtSRq", "QrstuvWXYNZ"));
+        assertFalse(C_LoopAndString.equal("Java", "CPP"));
+    }
+
+    @Test
+    public void secretCode() {
+        char[] alphabet
+                = {'a', 'b', 'c', 'd', 'e', 'f',
+                'g', 'h', 'i', 'j', 'k', 'l',
+                'm', 'n', 'o', 'p', 'q', 'r',
+                's', 't', 'u', 'v', 'w', 'x',
+                'y', 'z'};
+        assertEquals("abc",C_LoopAndString.secretCode("abz",alphabet));
+        assertEquals("ebcd",C_LoopAndString.secretCode("abcd",alphabet));
+    }
+
+    @Test
+    public void charInCommon() {
+        assertEquals(5,C_LoopAndString.charInCommon("I Love Javk","jAVA Is THE best"));
+        assertEquals(2,C_LoopAndString.charInCommon("pY TH on","ja bVa scr iPt"));
+        assertEquals(1,C_LoopAndString.charInCommon("hello","salam"));
+    }
 }
